@@ -17,6 +17,7 @@ async function handleRequest(request) {
   if (!uuid)
     return new Response(JSON.stringify({ message: 'Use /<uuid>', status: 404 }), {
       headers: { 'Content-Type': 'application/json' },
+      status: 404,
     });;
 
   try {
@@ -25,6 +26,7 @@ async function handleRequest(request) {
     if (data.errorMessage)
       return new Response(JSON.stringify({ message: data.errorMessage, status: 400 }), {
         headers: { 'Content-Type': 'application/json' },
+        status: 400,
       });;
 
   
@@ -38,6 +40,7 @@ async function handleRequest(request) {
   } catch(e) {
       return new Response(JSON.stringify({ message: 'Somethin went wrong. Try again later.', status: 500 }), {
         headers: { 'Content-Type': 'application/json' },
+        status: 500,
     });;
   }
 }
